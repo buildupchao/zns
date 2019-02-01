@@ -168,4 +168,4 @@ zns:
 
 ## Contact Me
 
-- [buildupchao@gmail.com](buildupchao@gmail.com)
+- [buildupchao@gmail.com](mailto:buildupchao@gmail.com)

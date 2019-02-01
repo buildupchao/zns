@@ -21,7 +21,6 @@ public class ZKit {
     @Autowired
     private ZnsServerConfiguration znsServerConfiguration;
 
-
     public void createRootNode() {
         boolean exists = zkClient.exists(znsServerConfiguration.getZkRoot());
         if (!exists) {
@@ -29,10 +28,19 @@ public class ZKit {
         }
     }
 
-    public void createNode(String path) {
-        boolean exists = zkClient.exists(znsServerConfiguration.getZkRoot() + File.separator + path);
+    public void createPersistentNode(String path) {
+        String pathName = znsServerConfiguration.getZkRoot() + File.separator + path;
+        boolean exists = zkClient.exists(pathName);
         if (!exists) {
-            zkClient.createEphemeral(path);
+            zkClient.createPersistent(pathName);
+        }
+    }
+
+    public void createNode(String path) {
+        String pathName = znsServerConfiguration.getZkRoot() + File.separator + path;
+        boolean exists = zkClient.exists(pathName);
+        if (!exists) {
+            zkClient.createEphemeral(pathName);
         }
     }
 }

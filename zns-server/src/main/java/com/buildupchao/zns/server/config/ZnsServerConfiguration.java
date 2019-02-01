@@ -22,8 +22,8 @@ public class ZnsServerConfiguration {
     @Value("${zns.server.zk.switch}")
     private boolean zkSwitch;
 
-    @Value("${zns.acceptor.port}")
-    private int acceptorPort;
+    @Value("${zns.network.port}")
+    private int networkPort;
 
     @Value("${server.port}")
     private int serverPort;

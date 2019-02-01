@@ -48,7 +48,9 @@ public class ZnsServerAcceptor implements Runnable {
                 .childHandler(znsServerInitializer);
 
         try {
-            ChannelFuture future = bootstrap.bind(znsServerConfiguration.getAcceptorPort()).sync();
+            LOGGER.info("ZnsServer acceptor startup at port[{}] successfully", znsServerConfiguration.getNetworkPort());
+
+            ChannelFuture future = bootstrap.bind(znsServerConfiguration.getNetworkPort()).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             LOGGER.error("ZnsServer acceptor startup failure!", e);

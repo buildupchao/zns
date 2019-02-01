@@ -2,10 +2,11 @@ package com.buildupchao.zns.server;
 
 import com.buildupchao.zns.server.acceptor.ZnsServerAcceptor;
 import com.buildupchao.zns.server.push.ServicePushManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,12 +24,13 @@ import java.util.concurrent.Executors;
 @Component
 public class ZnsServerRunner {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ZnsServerRunner.class);
+
     private static ExecutorService executor = null;
 
     @Autowired
     private ServicePushManager servicePushManager;
 
-    @PostConstruct
     public void run() {
         executor = Executors.newFixedThreadPool(3);
 

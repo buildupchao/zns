@@ -6,6 +6,8 @@ import com.buildupchao.zns.server.config.ZnsServerConfiguration;
 import com.buildupchao.zns.server.util.SpringBeanFactory;
 import com.buildupchao.zns.server.util.ZKit;
 import org.apache.commons.collections.MapUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,8 @@ import java.util.Map;
  */
 @Component
 public class ServicePushManager {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServicePushManager.class);
 
     @Autowired
     private ZKit zKit;
@@ -41,14 +45,19 @@ public class ServicePushManager {
             String serviceName = beanEntry.getValue().getClass().getName();
             pushServiceInfoIntoZK(serviceName);
         }
+        LOGGER.info("Register service into zookeeper successfully");
     }
 
     private void pushServiceInfoIntoZK(String serviceName) {
         // 创建服务节点
-        zKit.createNode(serviceName);
+        zKit.createPersistentNode(serviceName);
 
-        String serviceAddress = IpUtil.getHostAddress() + ":" + configuration.getServerPort();
+        String serviceAddress = IpUtil.getHostAddress()
+                + ":" + configuration.getServerPort()
+                + ":" + configuration.getNetworkPort();
         String serviceAddressPath = serviceName + File.separator + serviceAddress;
         zKit.createNode(serviceAddressPath);
+
+        LOGGER.info("Register service[{}] into zookeeper successfully", serviceAddressPath);
     }
 }

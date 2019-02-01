@@ -1,0 +1,17 @@
+
+logging:
+  config: classpath:logback-spring.xml
+server:
+  port: 8082
+spring:
+  application:
+    name: zns-service-provider
+
+zns:
+  server:
+      zk:
+        root: /zns
+        addr: localhost:2181
+        switch: true
+  network:
+      port: 8888

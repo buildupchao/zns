@@ -1,7 +1,7 @@
 package com.buildupchao.zns.server.push;
 
+import com.buildupchao.zns.api.annotation.ZnsService;
 import com.buildupchao.zns.common.util.IpUtil;
-import com.buildupchao.zns.server.annotation.ZnsService;
 import com.buildupchao.zns.server.config.ZnsServerConfiguration;
 import com.buildupchao.zns.server.util.SpringBeanFactory;
 import com.buildupchao.zns.server.util.ZKit;
@@ -35,21 +35,22 @@ public class ServicePushManager {
 
     public void registerIntoZK() {
         Map<String, Object> beanWithAnnotations =
-                SpringBeanFactory.getClassListByAnnotationClass(ZnsService.class);
+                SpringBeanFactory.getBeanListByAnnotationClass(ZnsService.class);
         if (MapUtils.isEmpty(beanWithAnnotations)) {
             return;
         }
 
         zKit.createRootNode();
-        for (Map.Entry<String, Object> beanEntry : beanWithAnnotations.entrySet()) {
-            String serviceName = beanEntry.getValue().getClass().getName();
+        for (Object bean : beanWithAnnotations.values()) {
+            ZnsService znsService = bean.getClass().getAnnotation(ZnsService.class);
+            String serviceName = znsService.cls().getName();
             pushServiceInfoIntoZK(serviceName);
         }
         LOGGER.info("Register service into zookeeper successfully");
     }
 
     private void pushServiceInfoIntoZK(String serviceName) {
-        // 创建服务节点
+        // Create persistent service node
         zKit.createPersistentNode(serviceName);
 
         String serviceAddress = IpUtil.getHostAddress()

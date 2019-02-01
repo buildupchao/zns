@@ -4,6 +4,7 @@ import com.buildupchao.zns.client.connector.handler.ZnsClientDecodeHandler;
 import com.buildupchao.zns.client.connector.handler.ZnsClientEncodeHandler;
 import com.buildupchao.zns.client.connector.handler.ZnsResponseHandler;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * @since JDK 1.8
  */
 @Component
+@ChannelHandler.Sharable
 public class ZnsClientInitializer extends ChannelInitializer<Channel> {
 
     @Autowired

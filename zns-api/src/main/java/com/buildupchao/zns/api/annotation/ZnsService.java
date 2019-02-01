@@ -1,4 +1,4 @@
-package com.buildupchao.zns.client.annotation;
+package com.buildupchao.zns.api.annotation;
 
 import org.springframework.stereotype.Component;
 
@@ -11,13 +11,14 @@ import java.lang.annotation.Target;
  * Interface to flag a class as being handled through the zns rpc.
  *
  * @author buildupchao
- *         Date: 2019/2/1 01:01
+ *         Date: 2019/1/31 23:39
  * @since JDK 1.8
  */
 @Component
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ZnsClient {
+public @interface ZnsService {
+    Class<?> cls();
 
     String version() default "";
 }

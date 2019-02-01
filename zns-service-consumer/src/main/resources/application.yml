@@ -1,0 +1,17 @@
+
+logging:
+  config: classpath:logback-spring.xml
+server:
+  port: 8081
+spring:
+  application:
+    name: zns-service-provider
+
+zns:
+  client:
+      zk:
+        root: /zns
+        addr: localhost:2181
+        switch: true
+      api:
+        package: com.buildupchao.zns.service.api

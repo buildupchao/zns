@@ -14,6 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>com.buildupchao</groupId>
+            <artifactId>zns-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.buildupchao</groupId>
             <artifactId>zns-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -28,6 +33,14 @@
         <dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
         </dependency>
     </dependencies>
     <build>

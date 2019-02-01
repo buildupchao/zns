@@ -1,7 +1,8 @@
 package com.buildupchao.zns.client.connector.handler;
 
-import com.buildupchao.zns.client.core.ZnsRequestPool;
+import com.buildupchao.zns.client.runner.ZnsRequestPool;
 import com.buildupchao.zns.common.bean.ZnsResponse;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
  * @since JDK 1.8
  */
 @Component
+@ChannelHandler.Sharable
 public class ZnsResponseHandler extends SimpleChannelInboundHandler<ZnsResponse> {
 
     @Autowired

@@ -3,6 +3,7 @@ package com.buildupchao.zns.server.acceptor.handler;
 import com.buildupchao.zns.common.bean.ZnsRequest;
 import com.buildupchao.zns.common.bean.ZnsResponse;
 import com.buildupchao.zns.server.util.SpringBeanFactory;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import java.lang.reflect.Method;
  * @since JDK 1.8
  */
 @Component
+@ChannelHandler.Sharable
 public class ZnsRequestHandler extends SimpleChannelInboundHandler<ZnsRequest> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ZnsRequestHandler.class);
@@ -37,7 +39,6 @@ public class ZnsRequestHandler extends SimpleChannelInboundHandler<ZnsRequest> {
             Object result = targetMethod.invoke(targetClass, parameterValues);
             znsResponse.setResult(result);
         } catch (Throwable cause) {
-            LOGGER.error("{} invoke generated an error!", this.getClass().getSimpleName());
             znsResponse.setCause(cause);
         }
         ctx.writeAndFlush(znsResponse);

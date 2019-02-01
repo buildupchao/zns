@@ -22,6 +22,6 @@ public class ProviderService implements Serializable {
     private int networkPort;
 
     private long timeout;
-    // 该服务提供者的权重
+    // the weight of service provider
     private int weight;
 }

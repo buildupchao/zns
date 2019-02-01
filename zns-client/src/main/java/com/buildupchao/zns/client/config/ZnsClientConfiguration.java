@@ -21,4 +21,7 @@ public class ZnsClientConfiguration {
 
     @Value("${server.port}")
     private String znsClientPort;
+
+    @Value("${zns.client.api.package}")
+    private String znsClientApiPackage;
 }

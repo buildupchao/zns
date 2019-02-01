@@ -1,5 +1,6 @@
 package com.buildupchao.zns.client.config;
 
+import com.buildupchao.zns.client.bean.ProviderService;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -30,13 +31,11 @@ public class BeanConfig {
     }
 
     @Bean
-    public LoadingCache<String, List<String>> buildCache() {
+    public LoadingCache<String, List<ProviderService>> buildCache() {
         return CacheBuilder.newBuilder()
-                .maximumSize(3000)
-                .expireAfterWrite(EXPIRE_SECONDS, TimeUnit.SECONDS)
-                .build(new CacheLoader<String, List<String>>() {
+                .build(new CacheLoader<String, List<ProviderService>>() {
                     @Override
-                    public List<String> load(String key) throws Exception {
+                    public List<ProviderService> load(String key) throws Exception {
                         return null;
                     }
                 });

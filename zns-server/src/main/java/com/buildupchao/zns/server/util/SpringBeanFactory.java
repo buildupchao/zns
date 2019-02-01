@@ -1,5 +1,7 @@
 package com.buildupchao.zns.server.util;
 
+import com.google.common.collect.Lists;
+import org.apache.commons.collections.MapUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -22,12 +24,8 @@ public class SpringBeanFactory implements ApplicationContextAware {
         return context.getBean(cls);
     }
 
-    public static <T> T getBean(String name, Class<T> cls) {
-        return context.getBean(name, cls);
-    }
-
-    public static Map<String, Object> getClassListByAnnotationClass(Class<? extends Annotation> annotationClass) {
-         return context.getBeansWithAnnotation(annotationClass);
+    public static Map<String, Object> getBeanListByAnnotationClass(Class<? extends Annotation> annotationClass) {
+        return context.getBeansWithAnnotation(annotationClass);
     }
 
     @Override

@@ -12,27 +12,27 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(
-	basePackages = "com.buildupchao.zns.service.provider",
-	basePackageClasses = ZnsServerPackage.class
+        basePackages = "com.buildupchao.zns.service.provider",
+        basePackageClasses = ZnsServerPackage.class
 )
 @SpringBootApplication
 public class ZnsServiceProviderApplication implements ApplicationRunner {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ZnsServiceProviderApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ZnsServiceProviderApplication.class);
 
-	@Autowired
-	private ZnsServerRunner znsServerRunner;
+    @Autowired
+    private ZnsServerRunner znsServerRunner;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ZnsServiceProviderApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(ZnsServiceProviderApplication.class, args);
 
-		LOGGER.info("Zns service provider application startup successfully");
+        LOGGER.info("Zns service provider application startup successfully");
 
-	}
+    }
 
-	@Override
-	public void run(ApplicationArguments applicationArguments) throws Exception {
-		znsServerRunner.run();
-	}
+    @Override
+    public void run(ApplicationArguments applicationArguments) throws Exception {
+        znsServerRunner.run();
+    }
 }
 

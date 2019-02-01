@@ -1,10 +1,11 @@
-package com.buildupchao.zns.client.core;
+package com.buildupchao.zns.client.runner;
 
 import com.buildupchao.zns.common.bean.ZnsResponse;
 import com.google.common.collect.Maps;
 import io.netty.util.concurrent.DefaultPromise;
 import io.netty.util.concurrent.EventExecutor;
 import io.netty.util.concurrent.Promise;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -31,6 +32,8 @@ public class ZnsRequestPool {
         }
         ZnsResponse znsResponse = promise.get(10, TimeUnit.SECONDS);
         requestPool.remove(requestId);
+
+        ZnsRequestManager.destroyChannelHolder(requestId);
         return znsResponse;
     }
 

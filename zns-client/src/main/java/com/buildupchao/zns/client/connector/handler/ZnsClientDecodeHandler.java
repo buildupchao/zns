@@ -17,7 +17,7 @@ public class ZnsClientDecodeHandler extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> list) throws Exception {
-        if (in.readInt() <= 4) {
+        if (in.readableBytes() <= 4) {
             return;
         }
 

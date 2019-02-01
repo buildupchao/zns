@@ -1,6 +1,6 @@
 package com.buildupchao.zns.client.cache;
 
-import com.buildupchao.zns.client.annotation.ZnsClient;
+import com.buildupchao.zns.api.annotation.ZnsClient;
 import com.buildupchao.zns.client.bean.ProviderService;
 import com.buildupchao.zns.client.util.SpringBeanFactory;
 import com.buildupchao.zns.client.util.ZKit;
@@ -60,12 +60,12 @@ public class ServiceRouteCache {
     }
 
     private void reloadCache() {
-        Map<String, Object> beans = SpringBeanFactory.getClassListByAnnotationClass(ZnsClient.class);
+        Map<String, Object> beans = SpringBeanFactory.getBeanListByAnnotationClass(ZnsClient.class);
         if (MapUtils.isEmpty(beans)) {
             return;
         }
-        for (Map.Entry<String, Object> bean : beans.entrySet()) {
-            String serviceName = bean.getValue().getClass().getName();
+        for (Object bean : beans.values()) {
+            String serviceName = bean.getClass().getName();
             List<ProviderService> serviceRoutes = zKit.getServiceInfos(serviceName);
             addCache(serviceName, serviceRoutes);
         }

@@ -26,8 +26,12 @@ public class SpringBeanFactory implements ApplicationContextAware {
         return context.getBean(name, cls);
     }
 
-    public static Map<String, Object> getClassListByAnnotationClass(Class<? extends Annotation> annotationClass) {
+    public static Map<String, Object> getBeanListByAnnotationClass(Class<? extends Annotation> annotationClass) {
          return context.getBeansWithAnnotation(annotationClass);
+    }
+
+    public static ApplicationContext context() {
+        return context;
     }
 
     @Override

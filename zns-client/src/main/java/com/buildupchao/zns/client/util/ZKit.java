@@ -32,7 +32,7 @@ public class ZKit {
     private ServiceRouteCache serviceRouteCache;
 
     public void subscribeZKEvent(String serviceName) {
-        String path = configuration.getZkRoot() + File.separator + serviceName;
+        String path = configuration.getZkRoot() + "/" + serviceName;
         zkClient.subscribeChildChanges(path, new IZkChildListener() {
             @Override
             public void handleChildChange(String parentPath, List<String> list) throws Exception {
@@ -45,7 +45,7 @@ public class ZKit {
     }
 
     public List<ProviderService> getServiceInfos(String serviceName) {
-        String path = configuration.getZkRoot() + File.separator + serviceName;
+        String path = configuration.getZkRoot() + "/" + serviceName;
         List<String> children = zkClient.getChildren(path);
 
         List<ProviderService> providerServices = convertToProviderService(children);

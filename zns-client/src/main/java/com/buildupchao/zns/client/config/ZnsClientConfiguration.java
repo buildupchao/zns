@@ -24,4 +24,7 @@ public class ZnsClientConfiguration {
 
     @Value("${zns.client.api.package}")
     private String znsClientApiPackage;
+
+    @Value("${zns.cluster.strategy}")
+    private String znsClientClusterStrategy;
 }

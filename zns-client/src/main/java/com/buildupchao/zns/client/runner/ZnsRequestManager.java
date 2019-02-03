@@ -5,7 +5,9 @@ import com.buildupchao.zns.client.bean.ProviderService;
 import com.buildupchao.zns.client.cache.ServiceRouteCache;
 import com.buildupchao.zns.client.cluster.ClusterStrategy;
 import com.buildupchao.zns.client.cluster.engine.ClusterEngine;
+import com.buildupchao.zns.client.config.ZnsClientConfiguration;
 import com.buildupchao.zns.client.connector.ZnsClientConnector;
+import com.buildupchao.zns.client.util.SpringBeanFactory;
 import com.buildupchao.zns.common.bean.ZnsRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
@@ -37,14 +39,16 @@ public class ZnsRequestManager {
 
     private static ZnsRequestPool ZNS_REQUEST_POOL;
     private static ServiceRouteCache SERVICE_ROUTE_CACHE;
+    private static String CLUSTER_STRATEGY;
 
     public static void startZnsRequestManager(ZnsRequestPool znsRequestPool, ServiceRouteCache serviceRouteCache) {
         ZNS_REQUEST_POOL = znsRequestPool;
         SERVICE_ROUTE_CACHE = serviceRouteCache;
+        CLUSTER_STRATEGY = SpringBeanFactory.getBean(ZnsClientConfiguration.class).getZnsClientClusterStrategy();
     }
 
     public static void sendRequest(ZnsRequest znsRequest) throws InterruptedException {
-        ClusterStrategy strategy = ClusterEngine.queryClusterStrategy("Random");
+        ClusterStrategy strategy = ClusterEngine.queryClusterStrategy(CLUSTER_STRATEGY);
         List<ProviderService> providerServices = SERVICE_ROUTE_CACHE.getServiceRoutes(znsRequest.getClassName());
         ProviderService targetServiceProvider = strategy.select(providerServices);
 

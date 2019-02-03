@@ -15,3 +15,5 @@ zns:
         switch: true
       api:
         package: com.buildupchao.zns.service.api
+  cluster:
+        strategy: Polling

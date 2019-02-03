@@ -56,7 +56,7 @@ public class ServicePushManager {
         String serviceAddress = IpUtil.getRealIp()
                 + ":" + configuration.getServerPort()
                 + ":" + configuration.getNetworkPort();
-        String serviceAddressPath = serviceName + File.separator + serviceAddress;
+        String serviceAddressPath = serviceName + "/" + serviceAddress;
         zKit.createNode(serviceAddressPath);
 
         LOGGER.info("Register service[{}] into zookeeper successfully", serviceAddressPath);

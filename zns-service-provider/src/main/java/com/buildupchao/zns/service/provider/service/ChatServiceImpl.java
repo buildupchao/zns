@@ -1,8 +1,8 @@
 package com.buildupchao.zns.service.provider.service;
 
-import com.buildupchao.zns.service.api.ChatService;
-import com.buildupchao.zns.common.exception.ZnsException;
 import com.buildupchao.zns.api.annotation.ZnsService;
+import com.buildupchao.zns.common.exception.ZnsException;
+import com.buildupchao.zns.service.api.ChatService;
 
 /**
  * @author buildupchao

@@ -26,7 +26,7 @@ public class TestController {
         try {
             chatService.sendWithError("No message");
         } catch (Exception ex) {
-            System.out.println("Got an error!");
+            ex.printStackTrace();
         }
     }
 }

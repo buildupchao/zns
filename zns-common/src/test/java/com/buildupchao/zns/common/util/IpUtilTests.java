@@ -15,6 +15,6 @@ public class IpUtilTests {
 
     @Test
     public void testGetHost() {
-        LOGGER.info("Test getHost: {}", IpUtil.getHostAddress());
+        LOGGER.info("Test getHost: {}", IpUtil.getRealIp());
     }
 }

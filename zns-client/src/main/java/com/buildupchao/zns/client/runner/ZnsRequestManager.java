@@ -7,14 +7,12 @@ import com.buildupchao.zns.client.cluster.ClusterStrategy;
 import com.buildupchao.zns.client.cluster.engine.ClusterEngine;
 import com.buildupchao.zns.client.connector.ZnsClientConnector;
 import com.buildupchao.zns.common.bean.ZnsRequest;
-import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.*;
 
 /**
@@ -26,7 +24,7 @@ public class ZnsRequestManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ZnsRequestManager.class);
 
-    private static final Map<String, ChannelHolder> channelHolderMap = Maps.newConcurrentMap();
+    private static final ConcurrentHashMap<String, ChannelHolder> channelHolderMap = new ConcurrentHashMap<>();
 
     private static final ExecutorService REQUEST_EXECUTOR = new ThreadPoolExecutor(
             30,
@@ -45,16 +43,18 @@ public class ZnsRequestManager {
         SERVICE_ROUTE_CACHE = serviceRouteCache;
     }
 
-    public static void sendRequest(ZnsRequest znsRequest) {
+    public static void sendRequest(ZnsRequest znsRequest) throws InterruptedException {
         ClusterStrategy strategy = ClusterEngine.queryClusterStrategy("Random");
         List<ProviderService> providerServices = SERVICE_ROUTE_CACHE.getServiceRoutes(znsRequest.getClassName());
         ProviderService targetServiceProvider = strategy.select(providerServices);
 
         if (targetServiceProvider != null) {
             String requestId = znsRequest.getRequestId();
-            Future<Boolean> future = REQUEST_EXECUTOR.submit(new ZnsClientConnector(requestId, targetServiceProvider));
-            while (!future.isDone()) {
-            }
+            CountDownLatch latch = new CountDownLatch(1);
+            REQUEST_EXECUTOR.execute(new ZnsClientConnector(requestId, targetServiceProvider, latch));
+
+            latch.await();
+
             ChannelHolder channelHolder = channelHolderMap.get(requestId);
             channelHolder.getChannel().writeAndFlush(znsRequest);
             LOGGER.info("Send request[{}:{}] to service provider successfully", requestId, znsRequest.toString());

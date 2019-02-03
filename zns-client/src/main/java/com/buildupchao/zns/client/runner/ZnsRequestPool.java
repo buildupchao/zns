@@ -1,14 +1,12 @@
 package com.buildupchao.zns.client.runner;
 
 import com.buildupchao.zns.common.bean.ZnsResponse;
-import com.google.common.collect.Maps;
 import io.netty.util.concurrent.DefaultPromise;
 import io.netty.util.concurrent.EventExecutor;
 import io.netty.util.concurrent.Promise;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -19,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class ZnsRequestPool {
 
-    private final Map<String, Promise<ZnsResponse>> requestPool = Maps.newConcurrentMap();
+    private final ConcurrentHashMap<String, Promise<ZnsResponse>> requestPool = new ConcurrentHashMap<>();
 
     public void submitRequest(String requestId, EventExecutor executor) {
         requestPool.put(requestId, new DefaultPromise<>(executor));

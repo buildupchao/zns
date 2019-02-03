@@ -37,14 +37,7 @@ public class ZKit {
             @Override
             public void handleChildChange(String parentPath, List<String> list) throws Exception {
                 if (CollectionUtils.isNotEmpty(list)) {
-                    List<ProviderService> providerServices = list.stream().map(v -> {
-                        String[] serviceInfos = v.split(":");
-                        return ProviderService.builder()
-                                .serverIp(serviceInfos[0])
-                                .serverPort(Integer.parseInt(serviceInfos[1]))
-                                .networkPort(Integer.parseInt(serviceInfos[2]))
-                                .build();
-                    }).collect(Collectors.toList());
+                    List<ProviderService> providerServices = convertToProviderService(list);
                     serviceRouteCache.updateCache(serviceName, providerServices);
                 }
             }
@@ -55,17 +48,22 @@ public class ZKit {
         String path = configuration.getZkRoot() + File.separator + serviceName;
         List<String> children = zkClient.getChildren(path);
 
-        List<ProviderService> providerServices = Lists.newArrayListWithCapacity(0);
-        if (CollectionUtils.isNotEmpty(children)) {
-            providerServices = children.stream().map(v -> {
-                String[] serviceInfos = v.split(":");
-                return ProviderService.builder()
-                        .serverIp(serviceInfos[0])
-                        .serverPort(Integer.parseInt(serviceInfos[1]))
-                        .networkPort(Integer.parseInt(serviceInfos[2]))
-                        .build();
-            }).collect(Collectors.toList());
+        List<ProviderService> providerServices = convertToProviderService(children);
+        return providerServices;
+    }
+
+    private List<ProviderService> convertToProviderService(List<String> list) {
+        if (CollectionUtils.isEmpty(list)) {
+            return Lists.newArrayListWithCapacity(0);
         }
+        List<ProviderService> providerServices = list.stream().map(v -> {
+            String[] serviceInfos = v.split(":");
+            return ProviderService.builder()
+                    .serverIp(serviceInfos[0])
+                    .serverPort(Integer.parseInt(serviceInfos[1]))
+                    .networkPort(Integer.parseInt(serviceInfos[2]))
+                    .build();
+        }).collect(Collectors.toList());
         return providerServices;
     }
 }

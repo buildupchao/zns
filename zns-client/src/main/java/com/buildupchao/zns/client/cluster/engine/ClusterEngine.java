@@ -2,6 +2,7 @@ package com.buildupchao.zns.client.cluster.engine;
 
 import com.buildupchao.zns.client.cluster.ClusterStrategy;
 import com.buildupchao.zns.client.cluster.ClusterStrategyEnum;
+import com.buildupchao.zns.client.cluster.impl.PollingClusterStrategyImpl;
 import com.buildupchao.zns.client.cluster.impl.RandomClusterStrategyImpl;
 import com.google.common.collect.Maps;
 
@@ -18,6 +19,7 @@ public class ClusterEngine {
 
     static {
         clusterStrategyMap.put(ClusterStrategyEnum.RANDOM, new RandomClusterStrategyImpl());
+        clusterStrategyMap.put(ClusterStrategyEnum.POLLING, new PollingClusterStrategyImpl());
     }
 
     public static ClusterStrategy queryClusterStrategy(String clusterStrategy) {

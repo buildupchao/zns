@@ -4,7 +4,7 @@
     <!-- 要使用springProperty属性，logback配置文件需要命名为logback-spring.xml -->
     <springProperty scope="local" name="LOG_LEVEL" source="logback.level" defaultValue="INFO" />
     <springProperty scope="local" name="LOG_PATH" source="logback.path" defaultValue="/data/log/zns" />
-    <contextName>ks-manager</contextName>
+    <contextName>zns-service-consumer</contextName>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">

@@ -29,7 +29,7 @@ public class ZKit {
     }
 
     public void createPersistentNode(String path) {
-        String pathName = znsServerConfiguration.getZkRoot() + File.separator + path;
+        String pathName = znsServerConfiguration.getZkRoot() + "/" + path;
         boolean exists = zkClient.exists(pathName);
         if (!exists) {
             zkClient.createPersistent(pathName);
@@ -37,7 +37,7 @@ public class ZKit {
     }
 
     public void createNode(String path) {
-        String pathName = znsServerConfiguration.getZkRoot() + File.separator + path;
+        String pathName = znsServerConfiguration.getZkRoot() + "/" + path;
         boolean exists = zkClient.exists(pathName);
         if (!exists) {
             zkClient.createEphemeral(pathName);

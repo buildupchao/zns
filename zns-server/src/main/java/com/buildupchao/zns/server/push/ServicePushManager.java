@@ -53,10 +53,10 @@ public class ServicePushManager {
         // Create persistent service node
         zKit.createPersistentNode(serviceName);
 
-        String serviceAddress = IpUtil.getHostAddress()
+        String serviceAddress = IpUtil.getRealIp()
                 + ":" + configuration.getServerPort()
                 + ":" + configuration.getNetworkPort();
-        String serviceAddressPath = serviceName + File.separator + serviceAddress;
+        String serviceAddressPath = serviceName + "/" + serviceAddress;
         zKit.createNode(serviceAddressPath);
 
         LOGGER.info("Register service[{}] into zookeeper successfully", serviceAddressPath);

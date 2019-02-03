@@ -12,6 +12,7 @@
         <module>zns-server</module>
         <module>zns-client</module>
         <module>zns-api</module>
+        <module>zns-monitor</module>
     </modules>
     <packaging>pom</packaging>
 

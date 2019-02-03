@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: zns-monitor
+server:
+  port: 9002
+
+swagger:
+  enable: true
+logging:
+  level:
+    root: info
+
+zns:
+  monitor:
+       zk:
+         root: /zns
+         addr: localhost:2181
+         switch: true

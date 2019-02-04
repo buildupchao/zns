@@ -34,10 +34,10 @@ public class ZnsServerRunner {
     public void run() {
         executor = Executors.newFixedThreadPool(3);
 
-        // 启动Acceptor，等待服务调用者发起调用请求
+        // Start Acceptor，waiting for the service caller to fire the request call
         executor.execute(new ZnsServerAcceptor());
 
-        // 注册服务提供者信息列表到Zookeeper
+        // Register service providers into Zookeeper
         servicePushManager.registerIntoZK();
     }
 

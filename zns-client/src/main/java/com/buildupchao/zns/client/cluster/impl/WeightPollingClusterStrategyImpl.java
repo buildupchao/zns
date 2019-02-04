@@ -33,7 +33,7 @@ public class WeightPollingClusterStrategyImpl implements ClusterStrategy {
                 }
             }
 
-            if (counter > providerServices.size()) {
+            if (counter >= providerServices.size()) {
                 counter = 0;
             }
             providerService = providerServices.get(counter);

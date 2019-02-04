@@ -25,7 +25,7 @@ public class PollingClusterStrategyImpl implements ClusterStrategy {
         try {
             lock.tryLock(10, TimeUnit.SECONDS);
             int size = serviceRoutes.size();
-            if (counter > size) {
+            if (counter >= size) {
                 counter = 0;
             }
 

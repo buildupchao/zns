@@ -1,5 +1,5 @@
 # ZNS
-What's the ZNS is an implementation of distribution RPC.
+What the ZNS is an implementation of distribution RPC.
 
 ## 1 Introduction
 

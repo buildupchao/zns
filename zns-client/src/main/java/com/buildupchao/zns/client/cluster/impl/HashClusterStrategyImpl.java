@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/4 22:45
+ * @date 2019/2/4 22:45
  * @since JDK 1.8
  */
 public class HashClusterStrategyImpl implements ClusterStrategy {

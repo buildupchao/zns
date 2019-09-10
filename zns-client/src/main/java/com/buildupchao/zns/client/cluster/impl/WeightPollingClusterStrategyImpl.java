@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/4 22:39
+ * @date 2019/2/4 22:39
  * @since JDK 1.8
  */
 public class WeightPollingClusterStrategyImpl implements ClusterStrategy {

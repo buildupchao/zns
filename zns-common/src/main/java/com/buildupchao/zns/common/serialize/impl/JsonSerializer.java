@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 18:23
+ * @date 2019/1/31 18:23
  * @since JDK 1.8
  */
 public class JsonSerializer implements ISerializer {

@@ -6,7 +6,6 @@ import com.buildupchao.zns.client.connector.init.ZnsClientInitializer;
 import com.buildupchao.zns.client.runner.ZnsRequestManager;
 import com.buildupchao.zns.client.util.SpringBeanFactory;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -18,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 03:04
+ * @date 2019/2/1 03:04
  * @since JDK 1.8
  */
 public class ZnsClientConnector implements Runnable {

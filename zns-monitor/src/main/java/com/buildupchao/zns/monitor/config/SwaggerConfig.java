@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/4 05:41
+ * @date 2019/2/4 05:41
  * @since JDK 1.8
  */
 @Configuration

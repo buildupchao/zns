@@ -19,7 +19,7 @@ import java.util.Map;
  * Provide a service that register service info into zookeeper.
  *
  * @author buildupchao
- *         Date: 2019/1/31 23:49
+ * @date 2019/1/31 23:49
  * @since JDK 1.8
  */
 @Component

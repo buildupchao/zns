@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 21:39
+ * @date 2019/1/31 21:39
  * @since JDK 1.8
  */
 public class ZnsServerDecodeHandler extends ByteToMessageDecoder {

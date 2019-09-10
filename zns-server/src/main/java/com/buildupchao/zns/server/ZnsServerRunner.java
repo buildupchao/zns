@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
  * Start HeartBeatChecker, keep alive with zookeeper.
  *
  * @author buildupchao
- *         Date: 2019/1/31 20:34
+ * @date 2019/1/31 20:34
  * @since JDK 1.8
  */
 @Component

@@ -2,7 +2,7 @@ package com.buildupchao.zns.common.exception;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 02:27
+ * @date 2019/2/1 02:27
  * @since JDK 1.8
  */
 public class ZnsException extends RuntimeException {

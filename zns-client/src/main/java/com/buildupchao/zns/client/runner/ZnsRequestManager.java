@@ -19,7 +19,7 @@ import java.util.concurrent.*;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 12:53
+ * @date 2019/2/1 12:53
  * @since JDK 1.8
  */
 public class ZnsRequestManager {

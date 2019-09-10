@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 18:18
+ * @date 2019/1/31 18:18
  * @since JDK 1.8
  */
 @Data

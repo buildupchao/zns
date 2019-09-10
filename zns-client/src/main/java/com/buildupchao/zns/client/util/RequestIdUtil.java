@@ -4,7 +4,7 @@ import java.util.UUID;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 12:49
+ * @date 2019/2/1 12:49
  * @since JDK 1.8
  */
 public class RequestIdUtil {

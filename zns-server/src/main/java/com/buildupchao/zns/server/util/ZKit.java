@@ -9,7 +9,7 @@ import java.io.File;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 00:33
+ * @date 2019/2/1 00:33
  * @since JDK 1.8
  */
 @Component

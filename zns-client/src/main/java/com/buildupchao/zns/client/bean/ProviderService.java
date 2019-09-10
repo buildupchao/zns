@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 02:52
+ * @date 2019/2/1 02:52
  * @since JDK 1.8
  */
 @Data

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/4 22:37
+ * @date 2019/2/4 22:37
  * @since JDK 1.8
  */
 public class WeightRandomClusterStrategyImpl implements ClusterStrategy {

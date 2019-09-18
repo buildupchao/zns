@@ -21,4 +21,8 @@ public class ZnsException extends RuntimeException {
     public ZnsException(Throwable cause) {
         super(cause);
     }
+
+    public ZnsException(StatusCode statusCode) {
+        super(statusCode.getDescription());
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 15:13
+ * @date 2019/2/1 15:13
  * @since JDK 1.8
  */
 @RestController

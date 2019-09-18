@@ -12,7 +12,7 @@ import java.util.Enumeration;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 21:05
+ * @date 2019/1/31 21:05
  * @since JDK 1.8
  */
 public class IpUtil {

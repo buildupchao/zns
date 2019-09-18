@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 01:25
+ * @date 2019/2/1 01:25
  * @since JDK 1.8
  */
 @Configuration

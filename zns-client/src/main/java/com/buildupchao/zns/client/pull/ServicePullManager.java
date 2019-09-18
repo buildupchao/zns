@@ -4,10 +4,8 @@ import com.buildupchao.zns.api.annotation.ZnsClient;
 import com.buildupchao.zns.client.bean.ProviderService;
 import com.buildupchao.zns.client.cache.ServiceRouteCache;
 import com.buildupchao.zns.client.config.ZnsClientConfiguration;
-import com.buildupchao.zns.client.util.SpringBeanFactory;
 import com.buildupchao.zns.client.util.ZKit;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,7 +20,7 @@ import java.util.Set;
  * Pull service provider list from zookeeper
  *
  * @author buildupchao
- *         Date: 2019/2/1 02:32
+ * @date 2019/2/1 02:32
  * @since JDK 1.8
  */
 @Component

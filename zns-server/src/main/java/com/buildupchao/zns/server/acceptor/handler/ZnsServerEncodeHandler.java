@@ -8,7 +8,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 21:42
+ * @date 2019/1/31 21:42
  * @since JDK 1.8
  */
 public class ZnsServerEncodeHandler extends MessageToByteEncoder<ZnsResponse> {

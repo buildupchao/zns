@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * Interface to flag a class as being handled through the zns rpc.
  *
  * @author buildupchao
- *         Date: 2019/2/1 01:01
+ * @date 2019/2/1 01:01
  * @since JDK 1.8
  */
 @Component

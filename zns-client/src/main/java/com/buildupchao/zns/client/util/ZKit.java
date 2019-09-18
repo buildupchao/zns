@@ -10,13 +10,12 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 01:24
+ * @date 2019/2/1 01:24
  * @since JDK 1.8
  */
 @Component

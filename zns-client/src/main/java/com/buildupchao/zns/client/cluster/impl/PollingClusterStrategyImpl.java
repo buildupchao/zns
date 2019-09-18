@@ -4,24 +4,42 @@ import com.buildupchao.zns.client.bean.ProviderService;
 import com.buildupchao.zns.client.cluster.ClusterStrategy;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/4 07:24
+ * @date 2019/2/4 07:24
  * @since JDK 1.8
  */
 public class PollingClusterStrategyImpl implements ClusterStrategy {
 
-    private AtomicLong counter = new AtomicLong(0);
+    private int counter = 0;
+    private Lock lock = new ReentrantLock();
 
     @Override
     public ProviderService select(List<ProviderService> serviceRoutes) {
-        int size = serviceRoutes.size();
-        long position = counter.incrementAndGet() % size;
-        if (position < 0) {
-            position = 0;
+        ProviderService providerService = null;
+        try {
+            lock.tryLock(10, TimeUnit.SECONDS);
+            int size = serviceRoutes.size();
+            if (counter >= size) {
+                counter = 0;
+            }
+
+            providerService = serviceRoutes.get(counter);
+            counter++;
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        } finally {
+            lock.unlock();
         }
-        return serviceRoutes.get((int) position);
+
+        if (providerService == null) {
+            providerService = serviceRoutes.get(0);
+        }
+        return providerService;
     }
 }

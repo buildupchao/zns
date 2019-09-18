@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  * Netty acceptor which provides network service.
  *
  * @author buildupchao
- *         Date: 2019/1/31 21:23
+ * @date 2019/1/31 21:23
  * @since JDK 1.8
  */
 public class ZnsServerAcceptor implements Runnable {

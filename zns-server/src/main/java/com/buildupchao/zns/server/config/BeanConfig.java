@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 20:52
+ * @date 2019/1/31 20:52
  * @since JDK 1.8
  */
 @Configuration

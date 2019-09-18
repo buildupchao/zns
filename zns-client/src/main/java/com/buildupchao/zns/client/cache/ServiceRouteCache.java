@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 01:47
+ * @date 2019/2/1 01:47
  * @since JDK 1.8
  */
 @Component

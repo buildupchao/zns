@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 22:14
+ * @date 2019/1/31 22:14
  * @since JDK 1.8
  */
 public class ClassUtils {

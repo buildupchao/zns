@@ -5,7 +5,7 @@ import com.buildupchao.zns.common.serialize.impl.JsonSerializer;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 22:03
+ * @date 2019/1/31 22:03
  * @since JDK 1.8
  */
 public class SerializationUtil {

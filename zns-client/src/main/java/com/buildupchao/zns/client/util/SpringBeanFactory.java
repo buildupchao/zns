@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 21:52
+ * @date 2019/1/31 21:52
  * @since JDK 1.8
  */
 @Component
@@ -20,10 +20,6 @@ public class SpringBeanFactory implements ApplicationContextAware {
 
     public static <T> T getBean(Class<T> cls) {
         return context.getBean(cls);
-    }
-
-    public static <T> T getBean(String name, Class<T> cls) {
-        return context.getBean(name, cls);
     }
 
     public static Map<String, Object> getBeanListByAnnotationClass(Class<? extends Annotation> annotationClass) {

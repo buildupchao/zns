@@ -13,6 +13,7 @@
         <module>zns-client</module>
         <module>zns-api</module>
         <module>zns-monitor</module>
+        <module>zns-zk</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -81,6 +82,11 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>3.6</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.3</version>
             </dependency>
             <dependency>
                 <groupId>cglib</groupId>

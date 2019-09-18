@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author buildupchao
- *         Date: 2019/1/31 21:35
+ * @date 2019/1/31 21:35
  * @since JDK 1.8
  */
 @Component

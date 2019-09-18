@@ -5,7 +5,7 @@ package com.buildupchao.zns.server.runner;
  * Keep alive with zookeeper.
  *
  * @author buildupchao
- *         Date: 2019/2/1 00:11
+ * @date 2019/2/1 00:11
  * @since JDK 1.8
  */
 public class HeartBeatChecker {

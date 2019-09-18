@@ -5,7 +5,7 @@ server:
   port: 8081
 spring:
   application:
-    name: zns-service-provider
+    name: zns-service-consumer
 
 zns:
   client:

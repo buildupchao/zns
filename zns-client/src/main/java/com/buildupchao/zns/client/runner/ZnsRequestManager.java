@@ -9,6 +9,8 @@ import com.buildupchao.zns.client.config.ZnsClientConfiguration;
 import com.buildupchao.zns.client.connector.ZnsClientConnector;
 import com.buildupchao.zns.client.util.SpringBeanFactory;
 import com.buildupchao.zns.common.bean.ZnsRequest;
+import com.buildupchao.zns.common.exception.StatusCode;
+import com.buildupchao.zns.common.exception.ZnsException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
@@ -19,7 +21,7 @@ import java.util.concurrent.*;
 
 /**
  * @author buildupchao
- *         Date: 2019/2/1 12:53
+ * @date 2019/2/1 12:53
  * @since JDK 1.8
  */
 public class ZnsRequestManager {
@@ -34,7 +36,7 @@ public class ZnsRequestManager {
             0,
             TimeUnit.SECONDS,
             new ArrayBlockingQueue<>(30),
-            new BasicThreadFactory.Builder().namingPattern("").build()
+            new BasicThreadFactory.Builder().namingPattern("request-service-connector-%d").build()
     );
 
     private static ZnsRequestPool ZNS_REQUEST_POOL;
@@ -47,7 +49,7 @@ public class ZnsRequestManager {
         CLUSTER_STRATEGY = SpringBeanFactory.getBean(ZnsClientConfiguration.class).getZnsClientClusterStrategy();
     }
 
-    public static void sendRequest(ZnsRequest znsRequest) throws InterruptedException {
+    public static void sendRequest(ZnsRequest znsRequest) throws InterruptedException, ZnsException {
         ClusterStrategy strategy = ClusterEngine.queryClusterStrategy(CLUSTER_STRATEGY);
         List<ProviderService> providerServices = SERVICE_ROUTE_CACHE.getServiceRoutes(znsRequest.getClassName());
         ProviderService targetServiceProvider = strategy.select(providerServices);
@@ -62,6 +64,8 @@ public class ZnsRequestManager {
             ChannelHolder channelHolder = channelHolderMap.get(requestId);
             channelHolder.getChannel().writeAndFlush(znsRequest);
             LOGGER.info("Send request[{}:{}] to service provider successfully", requestId, znsRequest.toString());
+        } else {
+            throw new ZnsException(StatusCode.NO_AVAILABLE_SERVICE_PROVINDER);
         }
     }
 
